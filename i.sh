@@ -17,13 +17,13 @@ done
 parted /dev/nvme0n1 -- mkpart primary fat32 1MiB 1GiB
 parted /dev/nvme0n1 -- set 1 boot on
 parted /dev/nvme0n1 -- mkpart primary ext4 1GiB 100%
-
+read n -1
 mkfs.vfat /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
-
+read n -1
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
-
+read n -1
 lsblk
 
 echo "- Partitions created, formatted, and mounted successfully."
