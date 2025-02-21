@@ -18,4 +18,17 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 lsblk
 read -n 1 -s -r -p "Press any key to continue..."
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver intel-media-driver vulkan-intel i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver i3 alacritty chromium htop rofi
+
+#Section "Device"
+#        Identifier "Intel Graphics"
+#        Driver "intel"
+#        Option "DRI" "iris"
+#EndSection
+
+arch-chroot /mnt
+useradd -mG wheel -s /bin/bash d
+visudo
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
