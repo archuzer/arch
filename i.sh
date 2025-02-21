@@ -21,15 +21,14 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 lsblk
 read -n 1 -s -r -p "Press any key to continue..."
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver i3 alacritty chromium htop rofi
-
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel i3 alacritty chromium htop rofi
 
 arch-chroot /mnt
-useradd -mG wheel -s /bin/bash d
-sed -i visudo
-grub-install --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
-systemctl enable NetworkManager
+#useradd -mG wheel -s /bin/bash d
+#sed -i visudo
+#grub-install --efi-directory=/boot
+#grub-mkconfig -o /boot/grub/grub.cfg
+#systemctl enable NetworkManager
 #Section "Device"
 #        Identifier "Intel Graphics"
 #        Driver "intel"
@@ -38,5 +37,5 @@ systemctl enable NetworkManager
 
 #sed -i '58 s/^/#/' ~/.config/i3/config
 #sed -i '60 s/^#//' ~/.config/i3/config
-xrandr --output HDMI1 --above eDP1 > .xinitrc
-exec i3 >> .xinitrc
+xrandr --output HDMI1 --above eDP1 > /mnt/home/d/.xinitrc
+exec i3 >> /mnt/home/d/.xinitrc
