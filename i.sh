@@ -28,5 +28,4 @@ lsblk
 
 echo "- Partitions created, formatted, and mounted successfully."
 echo "- PACSTRAP"
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver intel-media-driver i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip u
-nzip thunar file-roller pavucontrol vlc
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver intel-media-driver i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc
