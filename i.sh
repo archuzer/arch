@@ -6,9 +6,12 @@ set -x
 lsblk
 
 read -n 1 -s -r -p "Press any key to continue..."
-parted /dev/nvme0n1 mklabel gpt mkpart primary ext4 0GB 1GB mkpart primary ext4 1GB 100%
+parted /dev/nvme0n1 mklabel gpt
+parted /dev/nvme0n1 mkpart primary ext4 0GB 1GB
+parted /dev/nvme0n1 mkpart primary ext4 1GB 100%
 read -n 1 -s -r -p "Press any key to continue..."
-
+lsblk
+read -n 1
 mkfs.vfat /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
 read -n 1 -s -r -p "Press any key to continue..."
@@ -23,7 +26,7 @@ pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr 
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
-visudo
+sed -i visudo
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
