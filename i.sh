@@ -17,7 +17,7 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 lsblk
 sleep 5
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl grub efibootmgr networkmanager xorg xorg-xinit base-devel libva-intel-driver intel-media-driver vulkan-intel i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl grub efibootmgr networkmanager xorg xorg-xinit base-devel libva-intel-driver intel-media-driver vulkan-intel i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc xf86-video-intel
 
 arch-chroot /mnt
 #useradd -mG wheel -s /bin/bash d
