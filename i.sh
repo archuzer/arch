@@ -1,31 +1,21 @@
 #!/bin/bash
 
-# Check if the partition table is GPT; if not, create it
-if ! parted /dev/nvme0n1 print | grep -q 'Partition Table: gpt'; then
-  echo "Creating GPT partition table on /dev/nvme0n1..."
-  parted /dev/nvme0n1 -- mklabel gpt
-fi
+# Print every line that executes
+set -x
 
-# Remove existing partitions if any
-for partition in /dev/nvme0n1p*; do
-  if [ -e "$partition" ]; then
-    echo "Removing existing partition $partition..."
-    parted /dev/nvme0n1 -- rm $(basename $partition | sed 's/[^0-9]*//g')
-  fi
-done
-
-parted /dev/nvme0n1 -- mkpart primary fat32 1MiB 1GiB
-parted /dev/nvme0n1 -- set 1 boot on
-parted /dev/nvme0n1 -- mkpart primary ext4 1GiB 100%
-read n -1
-mkfs.vfat /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
-read n -1
-mount /dev/nvme0n1p2 /mnt
-mount --mkdir /dev/nvme0n1p1 /mnt/boot
-read n -1
 lsblk
 
-echo "- Partitions created, formatted, and mounted successfully."
-echo "- PACSTRAP"
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver intel-media-driver i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc
+read -n 1 -s -r -p "Press any key to continue..."
+parted /dev/nvme0n1 mklabel gpt mkpart primary ext4 0GB 1GB mkpart primary ext4 1GB 100%
+read -n 1 -s -r -p "Press any key to continue..."
+
+mkfs.vfat /dev/nvme0n1p1
+mkfs.ext4 /dev/nvme0n1p2
+read -n 1 -s -r -p "Press any key to continue..."
+
+mount /dev/nvme0n1p2 /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/boot
+lsblk
+read -n 1 -s -r -p "Press any key to continue..."
+
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim grub efibootmgr networkmanager xorg xorg-xinit base-devel xf86-video-intel libva-intel-driver intel-media-driver vulkan-intel i3 alacritty chromium htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc
