@@ -11,7 +11,7 @@ mkfs.ext4 /dev/nvme0n1p2
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl sed grub efibootmgr networkmanager xorg xorg-xinit base-devel chromium firefox libva-intel-driver vulkan-intel i3 alacritty brightnessctl ranger htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc ffmpeg xf86-video-intel
+pacstrap -K /mnt base linux linux-firmware sudo vim curl sed grub efibootmgr networkmanager xorg xorg-xinit base-devel chromium firefox i3 alacritty brightnessctl htop tmux rofi inxi
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
