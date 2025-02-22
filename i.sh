@@ -5,15 +5,11 @@ parted /dev/nvme0n1 mklabel gpt
 parted /dev/nvme0n1 mkpart primary ext4 0GB 1GB
 parted /dev/nvme0n1 mkpart primary ext4 1GB 100%
 
-sleep 10
 mkfs.vfat /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
 
-sleep 10
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
-
-sleep 10
 
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl sed grub efibootmgr networkmanager xorg xorg-xinit base-devel chromium firefox libva-intel-driver vulkan-intel i3 alacritty ranger htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc ffmpeg xf86-video-intel
 
