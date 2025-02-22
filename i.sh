@@ -19,17 +19,12 @@ grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sleep 2
-#Section "Device"
-#        Identifier "Intel Graphics"
-#        Driver "intel"
-#        Option "DRI" "iris"
-#EndSection
 mkdir -p /home/d/.config/i3
 cp /etc/i3/config /home/d/.config/i3/config
 sleep 1
 chown d:d /home/d/.config/i3/config
-sed -i '58 s/^/#/' /home/d/.config/i3/config
-sed -i '60 s/^#//' /home/d/.config/i3/config
+sed -i '63 s/^/#/' /home/d/.config/i3/config
+sed -i '65 s/^#//' /home/d/.config/i3/config
 sleep 2
 sed -i '125s/^#/ /' /etc/sudoers
 echo "setxkbmap -option caps:escape_shifted_capslock" > /home/d/.xinitrc
