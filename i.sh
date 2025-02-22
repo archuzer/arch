@@ -27,7 +27,7 @@ systemctl enable NetworkManager
 #        Driver "intel"
 #        Option "DRI" "iris"
 #EndSection
-mkdir /home/d/.config/i3
+mkdir -p /home/d/.config/i3
 cp /etc/i3/config /home/d/.config/i3/config
 sed -i '58 s/^/#/' /home/d/.config/i3/config
 sed -i '60 s/^#//' /home/d/.config/i3/config
