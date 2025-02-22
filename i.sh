@@ -22,6 +22,7 @@ useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
+sleep 2
 #Section "Device"
 #        Identifier "Intel Graphics"
 #        Driver "intel"
@@ -36,4 +37,5 @@ sed -i '125s/^#/ /' /etc/sudoers
 echo "setxkbmap -option caps:escape_shifted_capslock" > /home/d/.xinitrc
 echo "xrandr --output HDMI1 --above eDP1" >> /home/d/.xinitrc
 echo "exec i3" >> /home/d/.xinitrc
-passwd
+echo "alias i='sudo pacman -S'" >> .bashrc
+echo "alias c='startx'" >> .bashrc
