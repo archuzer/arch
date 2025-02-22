@@ -4,5 +4,5 @@ mkdir -p /home/d/.config/i3
 cp /etc/i3/config /home/d/.config/i3/config
 sleep 1
 chown d:d /home/d/.config/i3/config
-sed -i '58 s/^/#/' /home/d/.config/i3/config
-sed -i '60 s/^#//' /home/d/.config/i3/config
+sed -i '63 s/^/#/' /home/d/.config/i3/config
+sed -i '65 s/^#//' /home/d/.config/i3/config
