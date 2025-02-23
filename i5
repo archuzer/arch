@@ -24,5 +24,5 @@ echo "xrandr --output HDMI1 --above eDP1" >> /home/d/.xinitrc
 echo "exec i3" >> /home/d/.xinitrc
 echo "alias i='sudo pacman -S'" >> /home/d/.bashrc
 echo "alias c='startx'" >> /home/d/.bashrc
-echo "sudo pacman -S --needed base-devel vim xorg xorg-xinit xdg-utils i3 alacritty rofi chromium vlc ffmpeg inxi fzf git firefox curl sed brightnessctl ranger htop tmux rofi pipewire pipewire-alsa pipewire-pulse pipewire-jack zip unzip thunar file-roller pavucontrol chromium" >> lol
+echo "sudo pacman -S --needed base-devel vim xorg xorg-xinit xf86-video-intel xdg-utils i3 alacritty rofi chromium vlc ffmpeg inxi fzf git firefox curl sed brightnessctl ranger htop tmux rofi pipewire pipewire-alsa pipewire-pulse pipewire-jack zip unzip thunar file-roller pavucontrol chromium" >> lol
 
