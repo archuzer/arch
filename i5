@@ -10,7 +10,7 @@ mkfs.ext4 /dev/nvme0n1p2
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim xorg xorg-xinit i3 alacritty rofi chromium
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager vim grub efibootmgr xorg xorg-xinit i3 alacritty rofi chromium
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
