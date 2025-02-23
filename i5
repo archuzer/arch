@@ -19,7 +19,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sleep 2
 
-
 sed -i '125s/^#/ /' /etc/sudoers
 echo "setxkbmap -option caps:escape_shifted_capslock" > /home/d/.xinitrc
 echo "xrandr --output HDMI1 --above eDP1" >> /home/d/.xinitrc
@@ -27,15 +26,4 @@ echo "exec i3" >> /home/d/.xinitrc
 echo "alias i='sudo pacman -S'" >> /home/d/.bashrc
 echo "alias c='startx'" >> /home/d/.bashrc
 echo "alias lol='sudo pacman -S base-devel vim xorg xorg-xinit i3 alacritty rofi chromium vlc ffmpeg inxi fzf git firefox curl sed grub efibootmgr networkmanager xorg xorg-xinit i3 alacritty brightnessctl ranger htop tmux rofi pipewire pipewire-alsa pipewire-pulse pipewire-jack zip unzip thunar file-roller pavucontrol chromium'" >> /home/d/.bashrc
-echo "alias lol2='mkdir -p /home/d/.config/i3
-cp /etc/i3/config /home/d/.config/i3/config
 
-chown d:d /home/d/.config/i3/config
-sed -i '63 s/^/#/' /home/d/.config/i3/config
-sed -i '65 s/^#//' /home/d/.config/i3/config'
-mkdir -p /home/d/.config/i3
-cp /etc/i3/config /home/d/.config/i3/config
-
-chown d:d /home/d/.config/i3/config
-sed -i '63 s/^/#/' /home/d/.config/i3/config
-sed -i '65 s/^#//' /home/d/.config/i3/config'" >> /home/d/.bashrc
