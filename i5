@@ -10,7 +10,7 @@ mkfs.ext4 /dev/nvme0n1p2
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl sed grub efibootmgr networkmanager xorg xorg-xinit base-devel firefox i3 alacritty brightnessctl ranger htop tmux rofi git fzf pipewire pipewire-alsa pipewire-pulse pipewire-jack inxi zip unzip thunar file-roller pavucontrol vlc ffmpeg
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo vim curl sed grub efibootmgr networkmanager xorg xorg-xinit i3 alacritty brightnessctl ranger htop tmux rofi pipewire pipewire-alsa pipewire-pulse pipewire-jack zip unzip thunar file-roller pavucontrol
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
@@ -20,15 +20,15 @@ systemctl enable NetworkManager
 sleep 2
 mkdir -p /home/d/.config/i3
 cp /etc/i3/config /home/d/.config/i3/config
-sleep 1
+
 chown d:d /home/d/.config/i3/config
 sed -i '63 s/^/#/' /home/d/.config/i3/config
 sed -i '65 s/^#//' /home/d/.config/i3/config
-sleep 2
+
 sed -i '125s/^#/ /' /etc/sudoers
 echo "setxkbmap -option caps:escape_shifted_capslock" > /home/d/.xinitrc
 echo "xrandr --output HDMI1 --above eDP1" >> /home/d/.xinitrc
 echo "exec i3" >> /home/d/.xinitrc
 echo "alias i='sudo pacman -S'" >> /home/d/.bashrc
 echo "alias c='startx'" >> /home/d/.bashrc
-sleep 1000
+echo "alias lol='sudo pacman -S base-devel vlc ffmpeg inxi fzf git firefox'" >> /home/d/.bashrc
