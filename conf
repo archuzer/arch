@@ -1,0 +1,5 @@
+mkdir -p /home/d/.config/i3
+cp /etc/i3/config /home/d/.config/i3/config
+chown d:d /home/d/.config/i3/config
+sed -i '63 s/^/#/' /home/d/.config/i3/config
+sed -i '65 s/^#//' /home/d/.config/i3/config
