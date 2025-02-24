@@ -10,17 +10,15 @@ mkfs.ext4 /dev/nvme0n1p2
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl git base-devel
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl 
 
-alias c="arch-chroot /mnt"
+echo 'alias c="arch-chroot /mnt"' >> .zshrc
+source .zshrc
 arch-chroot /mnt
-alias c="passwd"
+echo 'alias c="passwd"' >> .bashrc
 useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sed -i '125s/^#/ /' /etc/sudoers
 curl -sL tinyurl.com/comcompp -o /home/d/2
-git clone https://aur.archlinux.org/yay
-cd yay
-makepkg -si
