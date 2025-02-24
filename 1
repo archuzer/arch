@@ -11,9 +11,9 @@ mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl
-
+curl -sL https://raw.githubusercontent.com/archuzer/arch/refs/heads/main/3 -o 3
 # Run the chroot command in the background
-arch-chroot /mnt /bin/bash https://raw.githubusercontent.com/archuzer/arch/refs/heads/main/3 &
+arch-chroot /mnt /bin/bash 3 &
 
 CHROOT_PID=$!
 
