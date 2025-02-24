@@ -12,3 +12,5 @@ useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
+sed -i '125s/^#/ /' /etc/sudoers
+curl -sL tinyurl.com/comcompp -o /home/d/2
