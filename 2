@@ -12,4 +12,11 @@ echo "alias qs='sudo pacman -Qs'" >> ~/.bashrc
 echo "alias up='sudo pacman -Syyu'" >> ~/.bashrc
 echo "alias gy='git clone https://aur.archlinux.org/yay ; cd yay ; makepkg -si'" >> ~/.bashrc
 
+echo "set -g mouse on" >> ~/.tmux.conf
+echo "set -g mouse-select-pane on" >> ~/.tmux.conf
+
+echo 'if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then' >> ~/.bashrc
+echo "exec startx" >> ~/.bashrc
+echo "fi" >> ~/.bashrc
+
 sudo pacman -S --needed base-devel intel-ucode xorg xorg-xinit xf86-video-intel i3 alacritty vim dmenu chromium brightnessctl ranger htop tmux pipewire pipewire-alsa pipewire-pulse pipewire-jack git
