@@ -10,9 +10,12 @@ mkfs.ext4 /dev/nvme0n1p2
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl fish
 
-useradd -mG wheel -s /bin/bash d
+alias c="arch-chroot /mnt"
+alias p="passwd"
+arch-chroot /mnt
+useradd -mG wheel -s /bin/fish d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
