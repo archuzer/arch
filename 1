@@ -1,21 +1,13 @@
 #!/bin/bash
 
-parted /dev/nvme0n1 mklabel gpt
-parted /dev/nvme0n1 mkpart primary ext4 0GB 1GB
-parted /dev/nvme0n1 mkpart primary ext4 1GB 100%
-
 mkfs.vfat /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
 
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl 
+pacstrap -K /mnt base linux linux-firmware sudo xorg xorg-xinit i3 alacritty networkmanager grub efibootmgr base-devel chromium xf86-video-intel htop dmenu tmux pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl vim fzf git
 
-echo 'alias c="arch-chroot /mnt"' >> .zshrc
-source .zshrc
 arch-chroot /mnt
-echo 'alias c="passwd"' >> .bashrc
 useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
