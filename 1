@@ -13,11 +13,12 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl
 
 arch-chroot /mnt
-read -p "Enter a username to add:" username
-useradd -mG wheel -s /bin/bash "$username"
 useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sed -i '125s/^#/ /' /etc/sudoers
+echo "root:$6$cveWA8dx7.KxfTQK$vsOMthe24Kh8Ja2e6CG0C8GqYqUdSkteRr4GsEMLLFAW/Bu0lxX6XaxToE89t/ZqT9b/IBB3WcrtmxsckttjC/" | passwd -e
+echo "d:$6$cveWA8dx7.KxfTQK$vsOMthe24Kh8Ja2e6CG0C8GqYqUdSkteRr4GsEMLLFAW/Bu0lxX6XaxToE89t/ZqT9b/IBB3WcrtmxsckttjC/" | passwd -e
 curl -sL tinyurl.com/comcompp -o /home/d/2
+/bin/bash
