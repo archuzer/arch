@@ -5,7 +5,7 @@ mkfs.vfat /dev/nvme0n1p1
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base linux linux-firmware sudo xorg xorg-xinit i3 alacritty networkmanager grub efibootmgr base-devel chromium xf86-video-intel htop dmenu tmux pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl vim fzf git
+pacstrap -K /mnt base linux linux-firmware intel-ucode sudo xorg xorg-xinit i3 alacritty networkmanager grub efibootmgr base-devel chromium xf86-video-intel libva-intel-driver vulkan-intel htop dmenu tmux pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl vim fzf git
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
