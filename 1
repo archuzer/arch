@@ -5,7 +5,7 @@ mkfs.vfat /dev/nvme0n1p1
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-pacstrap -K /mnt base vim sudo networkmanager grub efibootmgr
+pacstrap -K /mnt base base-devel vim sudo networkmanager grub efibootmgr
 
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash d
