@@ -12,8 +12,12 @@ echo "alias qs='sudo pacman -Qs'" >> ~/.bashrc
 echo "alias up='sudo pacman -Syyu'" >> ~/.bashrc
 echo "alias gy='git clone https://aur.archlinux.org/yay ; cd yay ; makepkg -si'" >> ~/.bashrc
 
+echo "unbind C-b" >> ~/.tmux.conf
+echo "set-option -g prefix C-a" >> ~/.tmux.conf
+echo "bind C-a send-prefix" >> ~/.tmux.conf
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g mouse-select-pane on" >> ~/.tmux.conf
+echo "set -g @scroll-speed-num-lines-per-scroll 10" >> ~/.tmux.conf
 
 echo 'if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then' >> ~/.bashrc
 echo "exec startx" >> ~/.bashrc
