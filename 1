@@ -12,13 +12,9 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl
 
-arch-chroot /mnt
-useradd -mG wheel -s /bin/bash d
-grub-install --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
-systemctl enable NetworkManager
-sed -i '125s/^#/ /' /etc/sudoers
-HASH=$(openssl passwd -6 "ok")
-echo "root:$HASH" | chpasswd -e
-echo "d:$HASH" | chpasswd -e
-curl -sL tinyurl.com/comcompp -o /home/d/2
+# Run the chroot command in the background
+arch-chroot /mnt /bin/bash 3 &
+
+CHROOT_PID=$!
+
+wait $CHROOT_PID
