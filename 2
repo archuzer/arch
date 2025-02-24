@@ -16,8 +16,7 @@ echo "unbind C-b" >> ~/.tmux.conf
 echo "set-option -g prefix C-a" >> ~/.tmux.conf
 echo "bind C-a send-prefix" >> ~/.tmux.conf
 echo "set -g mouse on" >> ~/.tmux.conf
-echo "set -g mouse-select-pane on" >> ~/.tmux.conf
-echo "set -g @scroll-speed-num-lines-per-scroll 10" >> ~/.tmux.conf
+echo "set -g @scroll-speed-num-lines-per-scroll 20" >> ~/.tmux.conf
 
 echo 'if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then' >> ~/.bashrc
 echo "exec startx" >> ~/.bashrc
