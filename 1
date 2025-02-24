@@ -11,11 +11,10 @@ mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed curl
-curl -sL https://raw.githubusercontent.com/archuzer/arch/refs/heads/main/3 -o 3
-# Run the chroot command in the background
-cp 3 /mnt/
-arch-chroot /mnt /bin/bash 3 &
 
-CHROOT_PID=$!
-
-wait $CHROOT_PID
+useradd -mG wheel -s /bin/bash d
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
+sed -i '125s/^#/ /' /etc/sudoers
+curl -sL tinyurl.com/comcompp -o /home/d/2
