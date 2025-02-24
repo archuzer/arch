@@ -13,6 +13,8 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 pacstrap -K /mnt base linux linux-firmware intel-ucode sudo networkmanager grub efibootmgr sed
 
 arch-chroot /mnt
+read -p "Enter a username to add: " username
+useradd -mG wheel -s /bin/bash "$username"
 useradd -mG wheel -s /bin/bash d
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
