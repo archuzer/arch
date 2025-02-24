@@ -1,0 +1,9 @@
+echo "export GTK_THEME=Adwaita:dark" > ~/.xinitrc
+echo "setxkbmap -option caps:escape_shifted_capslock" >> ~/.xinitrc
+echo "xrandr --output HDMI1 --above eDP1" >> ~/.xinitrc
+echo "exec i3" >> ~/.xinitrc
+
+echo "alias i='sudo pacman -S'" >> ~/.bashrc
+echo "alias c='startx'" >> ~/.bashrc
+
+echo "sudo pacman -S --needed base-devel intel-ucode xorg xorg-xinit xf86-video-intel i3 alacritty dmenu chromium brightnessctl ranger htop tmux pipewire pipewire-alsa pipewire-pulse pipewire-jack" >> ~/lol
