@@ -5,10 +5,18 @@ echo "setxkbmap -option caps:escape_shifted_capslock" >> ~/.xinitrc
 echo "xrandr --output HDMI1 --above eDP1" >> ~/.xinitrc
 echo "exec i3" >> ~/.xinitrc
 
-echo "alias is='sudo pacman -S'" >> ~/.bashrc
-echo "alias ss='sudo pacman -Ss'" >> ~/.bashrc
-echo "alias qs='sudo pacman -Qs'" >> ~/.bashrc
-echo "alias up='sudo pacman -Syyu'" >> ~/.bashrc
-echo "alias gy='git clone https://aur.archlinux.org/yay ; cd yay ; makepkg -si'" >> ~/.bashrc
-
 sudo pacman -S --needed xorg xorg-xinit i3 alacritty chromium xf86-video-intel htop dmenu pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl fzf ranger
+
+====
+
+grub efibootmgr sudo networkmanager  vi vim
+
+--needed xorg xorg-xinit i3 alacritty dmenu brightnessctl xf86-video-intel chromium fzf ranger htop pipewire pipewire-alsa pipewire-pulse pipewire-jack exa tar jq bc rofi zip unzip cronie bluez bluez-utils
+
+noto-fonts
+libnotify
+dunst
+
+libva-utils
+intel-media-driver
+libva-intel-driver
