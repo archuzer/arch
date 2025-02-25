@@ -1,0 +1,11 @@
+#!/bin/bash
+mkfs.ext4 /dev/nvme0n1p2
+mkfs.vfat /dev/nvme0n1p1
+
+mount /dev/nvme0n1p2 /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/boot
+
+pacstrap -K /mnt base linux linux-firmware intel-ucode base-devel vim sudo networkmanager grub efibootmgr
+
+#user passwords included
+curl -sL tinyurl.com/comcomkk -o /mnt/3
