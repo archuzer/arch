@@ -1,13 +1,20 @@
 #!/bin/bash
 
+# FORMAT
 mkfs.ext4 /dev/nvme0n1p2
 mkfs.vfat /dev/nvme0n1p1
 
+# MOUNT
 mount /dev/nvme0n1p2 /mnt
 mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
+# BASE
 pacstrap -K /mnt base linux linux-firmware intel-ucode base-devel vi vim sudo networkmanager grub efibootmgr
 
+# EXTRA
+xorg xorg-xinit i3 alacritty chromium xf86-video-intel htop dmenu pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl fzf ranger
+
+# ADD USER + GRUB + INET
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash $USERNAME
 grub-install --efi-directory=/boot
