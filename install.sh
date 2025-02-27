@@ -12,8 +12,7 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 pacstrap -K /mnt base linux linux-firmware intel-ucode base-devel vi vim sudo networkmanager grub efibootmgr
 
 # EXTRA
-xorg xorg-xinit i3 alacritty chromium htop dmenu pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl
-fzf ranger exa tar jq bc rofi zip unzip cronie bluez bluez-utils noto-fonts
+xorg xorg-xinit i3 alacritty chromium htop dmenu pipewire pipewire-alsa pipewire-pulse pipewire-jack brightnessctl fzf ranger exa tar jq bc rofi zip unzip cronie bluez bluez-utils noto-fonts
 
 # DRIVERS
 xf86-video-intel
