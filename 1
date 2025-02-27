@@ -18,6 +18,13 @@ fzf ranger exa tar jq bc rofi zip unzip cronie bluez bluez-utils noto-fonts
 # DRIVERS
 xf86-video-intel
 
+libva-intel-driver
+intel-media-driver
+
+libva-utils => vainfo > check VA-API
+
+
+
 # ADD USER + GRUB + INET
 arch-chroot /mnt
 useradd -mG wheel -s /bin/bash $USERNAME
