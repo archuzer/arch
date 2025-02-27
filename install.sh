@@ -30,3 +30,13 @@ grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sed -i '125s/^#/ /' /etc/sudoers
+
+# ADD USER + ENCRYPTED PASSWD TEST
+useradd -mG wheel -s /bin/bash d
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
+sed -i '125s/^#/ /' /etc/sudoers
+HASH="$6$cveWA8dx7.KxfTQK$vsOMthe24Kh8Ja2e6CG0C8GqYqUdSkteRr4GsEMLLFAW/Bu0lxX6XaxToE89t/ZqT9b/IBB3WcrtmxsckttjC/"
+echo "root:$HASH" | chpasswd -e
+echo "d:$HASH" | chpasswd -e
