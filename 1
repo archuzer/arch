@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkfs.ext4 /dev/nvme0n1p2
 mkfs.vfat /dev/nvme0n1p1
 
 mount /dev/nvme0n1p2 /mnt
@@ -8,9 +9,8 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 pacstrap -K /mnt base linux linux-firmware intel-ucode base-devel vi vim sudo networkmanager grub efibootmgr
 
 arch-chroot /mnt
-useradd -mG wheel -s /bin/bash d
+useradd -mG wheel -s /bin/bash $USERNAME
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 sed -i '125s/^#/ /' /etc/sudoers
-curl -sL tinyurl.com/comcompp -o /home/d/2
